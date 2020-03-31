@@ -1,8 +1,8 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>Currency Converter</h1>
     <div class="mainContainer">
-<input  v-model="enterValue" placeholder="USD" type="text">
+<input  v-model="enterValue" placeholder="Please enter USD value" type="text">
 <select v-model="selectedCurrency" name="" id="">
   <option v-for="currency in currencyNames" :key="currency.shortForm" :value="currency.shortForm">{{currency.fullForm}}</option>
 </select>
@@ -63,7 +63,7 @@ selectedCurrency:"INR"
     },
     computed:{
       getValue:function(){
-        return this.enterValue && this.response && this.enterValue * this.response.conversion_rates[this.selectedCurrency].toFixed(2)
+        return this.enterValue && this.response && (this.enterValue * this.response.conversion_rates[this.selectedCurrency]).toFixed(2)
       }
     }
 
@@ -76,7 +76,7 @@ selectedCurrency:"INR"
 <style scoped>
 input{
   height: 50px;
-  width: 170px;
+  width: 280px;
   font-size: 25px;
   text-align: center; 
 }
